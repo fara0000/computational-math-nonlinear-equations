@@ -3,7 +3,7 @@ from Equation import Equation
 from methods.NewtonsMethod import NewtonsMethod
 from methods.SimpleIterationsMethod import SimpleIterationsMethod
 
-import mainboilerplate
+import ConsoleFunctionality
 
 methods = {
     2: NewtonsMethod,
@@ -11,22 +11,23 @@ methods = {
 }
 
 predefined_functions = {
-    # Решение на Wolfram: https://www.wolframalpha.com/input/?i=x+%5E+3+%2B+4.81+*+x+%5E+2+-+17.37+*+x+%2B+5.38
     1: Equation(lambda x: (x ** 3 + 4.81 * x ** 2 - 17.37 * x + 5.38), 'x ^ 3 + 4.81 * x ^ 2 - 17.37 * x + 5.38'),
+    2: Equation(lambda x: (math.sin(x) + 0.7 - math.cos(x) ** 2), 'sin(x) + 0.7 - cos(x) ^ 2'),
+    3: Equation(lambda x: (x ** 3 - 1.89 * x ** 2 - 2 * x + 1.76), 'x ^ 3 - 1.89 * x ^ 2 - 2 * x + 1.76'),
 }
 
 ENABLE_LOGGING = True
 
 while True:
     # Выбор функции
-    function = mainboilerplate.choose_equation(predefined_functions)
+    function = ConsoleFunctionality.choose_equation(predefined_functions)
 
     # Выбор метода
-    method_number = mainboilerplate.choose_method_number(methods)
+    method_number = ConsoleFunctionality.choose_method_number(methods)
 
     while True:
         # Ввод исходных данных
-        left, right, epsilon, decimal_places = mainboilerplate.read_initial_data()
+        left, right, epsilon, decimal_places = ConsoleFunctionality.read_initial_data()
 
         # Верификация исходных данных
         method = methods[method_number](function, left, right, epsilon, decimal_places, ENABLE_LOGGING)
@@ -60,7 +61,7 @@ while True:
         continue
 
     # Вывод
-    mainboilerplate.print_result(result, output_file_name)
+    ConsoleFunctionality.print_result(result, output_file_name)
 
     if input('\nЕще раз? [y/n] ') != 'y':
         break

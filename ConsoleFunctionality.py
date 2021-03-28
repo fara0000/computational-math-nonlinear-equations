@@ -33,7 +33,7 @@ def print_result(result, output_file_name):
 def read_initial_data() -> Tuple[float, float, float, int]:
     while True:
         filename = input("Введите имя файла для загрузки исходных данных и интервала "
-                         "или пустую строку, чтобы ввести вручную: ")
+                         "или тпусую строку, чтобы ввести вручную: ")
         if filename == '':
             left = float(input('Введите левую границу интервала: '))
             right = float(input('Введите правую границу интервала: '))
